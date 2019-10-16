@@ -18,11 +18,9 @@ Follow these steps to prepare the deployment:
 
 ### Step 1 - Download the required code to you computer
 
-The deployment runs locally in your computer. You have 2 alternative methods to do it:
+The deployment runs locally in your computer.
 
-1. Download and extract the file **deployment package.zip** located [here](https://github.com/Azure/AIPlatform/tree/master/CognitiveSearch/Deployment)
-
-1. Clone the repo, using [Git for Windows](https://gitforwindows.org/) or any other git app you want. The command is ```git clone https://github.com/Azure/https://github.com/Azure/AIPlatform.git```
+1. Clone the repo, using [Git for Windows](https://gitforwindows.org/) or any other git app you want. The command is ```git clone https://github.com/usistan/hawkeye.git```
 
 ### Step 2 - Install Azure PowerShell Module
 
