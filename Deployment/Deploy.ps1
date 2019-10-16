@@ -41,13 +41,6 @@ if($subscriptionId -ne "default"){
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-#v0$result = New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile .\main.json -prefix $prefix
-
-#v1$mainBody = Get-Content -Path .\main.json
-#v1$mainBody = $mainBody -replace "%%location%%", $location
-#v1Set-Content -Path .\main1.json -value $mainBody
-#v1$result = New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile .\main1.json -prefix $prefix
-
 $paramObject = @{
     'location'  = $location
 }
