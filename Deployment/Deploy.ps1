@@ -41,13 +41,24 @@ if($subscriptionId -ne "default"){
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-#$result = New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile .\main.json -prefix $prefix
-$mainBody = Get-Content -Path .\main.json
-$mainBody = $mainBody -replace "%%location%%", $location
-Set-Content -Path .\main1.json -value $mainBody
-$result = New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile .\main1.json -prefix $prefix
+#v0$result = New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile .\main.json -prefix $prefix
 
-Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $dataSourceBody | ConvertTo-Json
+#v1$mainBody = Get-Content -Path .\main.json
+#v1$mainBody = $mainBody -replace "%%location%%", $location
+#v1Set-Content -Path .\main1.json -value $mainBody
+#v1$result = New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile .\main1.json -prefix $prefix
+
+$paramObject = @{
+    'location'  = $location
+}
+$parameters = @{
+    'ResourceGroupName'     = $resourceGroupName
+    'TemplateFile'          = 'main.json'
+    'TemplateParameterObject' = $paramObject
+    'prefix'               = $prefix
+}
+
+$result = New-AzResourceGroupDeployment @parameters
 
 $storageAccountKey = $result.Outputs["storageAccountKey"].value
 $searchServiceKey = $result.Outputs["searchServiceKey"].Value
